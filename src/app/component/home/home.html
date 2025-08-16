@@ -1,0 +1,61 @@
+<!-- Carousel Section -->
+<div id="demo" class="carousel slide h-80 overflow-hidden" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner h-80">
+    <div class="carousel-item active">
+      <img src="baner3.jpg" class="d-block w-100 h-80 object-cover" alt="Title 1" />
+      <div class="carousel-caption d-none d-md-block">
+       
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="baner4.jpg" class="d-block w-100 h-80 object-cover" alt="Title 2" />
+      <div class="carousel-caption d-none d-md-block">
+        
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="baner5.jpg" class="d-block w-100 h-80 object-cover" alt="Title 3" />
+      <div class="carousel-caption d-none d-md-block">
+        
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev"
+    aria-label="Previous slide">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next"
+    aria-label="Next slide">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<!-- Products Section -->
+<section id="product" class="w-full min-h-screen p-4">
+  <div class="grid grid-cols-5 gap-12 w-full place-content-center">
+    <div *ngFor="let product of products"
+      class=" relative flex flex-col bg-gray-200 justify-center w-full items-center p-2 rounded shadow">
+      <p class="absolute top-3 right-3 font-semibold text-gray-900 bg-amber-300 rounded p-1">
+        -{{ product.discount }}%
+      </p>
+      <img [src]="product.img" 
+           [alt]="product.name" 
+           [routerLink]="['/detailProduct', product.id]" 
+           class="w-full h-80 object-cover rounded cursor-pointer" />
+      <div class="mt-2 text-center">
+        <p class="font-semibold">{{ product.name }}</p>
+        <p class="text-sm text-gray-700 text-start">{{ product.description }}</p>
+        <p class="mt-1 font-semibold">Price : <i>${{ product.price }}</i></p>
+        <button class="px-4 py-1 my-2 bg-green-400 rounded text-sm hover:bg-green-500 transition-all hover:translate-y-[-1px] duration-150" (click)="addToCart(product)">
+          ADD
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

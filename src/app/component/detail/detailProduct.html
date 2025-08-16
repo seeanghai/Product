@@ -1,0 +1,50 @@
+<div *ngIf="selectedProduct" class="grid grid-cols-2 place-content-center gap-10 p-20 h-full">
+  
+  <!-- Left: Product Image -->
+  <div class="flex-shrink-0">
+    <img [src]="selectedProduct.img" 
+         [alt]="selectedProduct.name" 
+         class="w-full min-h-170 object-cover rounded" />
+  </div>
+
+<div class="flex-1">
+  <h2 class="text-2xl font-bold mb-4">{{ selectedProduct.name }}</h2>
+  <p class="mb-2">{{ selectedProduct.description }}</p>
+
+  <table class="w-full text-left border-collapse border border-gray-300 rounded">
+    <tbody>
+      <tr class="border border-gray-300">
+        <td class="px-4 py-2 font-semibold border border-gray-300">Price</td>
+        <td class="px-4 py-2 border border-gray-300">${{ selectedProduct.price }}</td>
+      </tr>
+      <tr *ngIf="selectedProduct.discount > 0" class="border border-gray-300">
+        <td class="px-4 py-2 font-semibold text-red-500 border border-gray-300">Discount</td>
+        <td class="px-4 py-2 text-red-500 border border-gray-300">{{ selectedProduct.discount }}%</td>
+      </tr>
+      <tr class="border border-gray-300">
+        <td class="px-4 py-2 font-semibold border border-gray-300">Quantity</td>
+        <td class="px-4 py-2 border border-gray-300">
+          <div class="flex items-center gap-2">
+            <button (click)="decreaseQty(selectedProduct)" class="bg-gray-300 px-2 rounded">-</button>
+            <span>{{ selectedProduct.qty || 1 }}</span>
+            <button (click)="increaseQty(selectedProduct)" class="bg-gray-300 px-2 rounded">+</button>
+          </div>
+        </td>
+      </tr>
+      <tr class="border border-gray-300">
+        <td class="px-4 py-2 font-semibold border border-gray-300">Total</td>
+        <td class="px-4 py-2 font-bold border border-gray-300">
+          ${{ (selectedProduct.price * (selectedProduct.qty || 1)).toFixed(2) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+    <button (click)="addToCart(selectedProduct)" 
+            class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      Add to Cart
+    </button>
+  </div>
+
+</div>

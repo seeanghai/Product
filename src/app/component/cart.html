@@ -1,0 +1,59 @@
+<div class="px-6 py-4 w-full max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">Your Cart</h2>
+    <table class="min-w-full border border-gray-300 rounded-lg overflow-hidden">
+        <thead class="bg-gray-100 text-gray-700">
+            <tr>
+                <th class="px-4 py-2">#</th>
+                <th class="px-4 py-2">Product</th>
+                <th class="px-4 py-2">Description</th>
+                <th class="px-4 py-2">Price</th>
+                <th class="px-4 py-2">Qty</th>
+                <th class="px-4 py-2">Total</th>
+                <th class="px-4 py-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartItems; let i = index" class="border-b border-gray-200 hover:bg-gray-50">
+                <td class="px-4 py-2 text-center font-semibold">{{ i + 1 }}</td>
+                <td class="px-4 py-2 flex items-center gap-3">
+                    <img [src]="item.img" [alt]="item.name" class="h-12 w-12 object-cover rounded" />
+                    <span>{{ item.name }}</span>
+                </td>
+                <td class="px-4 py-2">{{ item.description }}</td>
+                <td class="px-4 py-2">${{ item.price }}</td>
+                <td class="px-4 py-2 text-center">
+                    <div class="flex items-center justify-center gap-2">
+                        <button (click)="decreaseQty(item)" class="bg-gray-300 px-2 rounded">-</button>
+                        <span>{{ item.qty || 1 }}</span>
+                        <button (click)="increaseQty(item)" class="bg-gray-300 px-2 rounded">+</button>
+                    </div>
+                </td>
+
+                <td class="px-4 py-2 font-semibold">
+                    ${{ (item.price * (item.qty || 1)).toFixed(2) }}
+                </td>
+                <td class="px-4 py-2">
+                    <button (click)="removeItem(i)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+            <tr *ngIf="cartItems.length > 0" class="bg-gray-100 font-bold">
+                <td colspan="5" class="px-4 py-2 text-right">Total Amount:</td>
+                <td class="px-4 py-2">${{ getTotalPrice().toFixed(2) }}</td>
+                <td></td>
+            </tr>
+            <tr *ngIf="cartItems.length === 0">
+                <td colspan="7" class="text-center py-4 text-gray-500">
+                    Your cart is empty.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="mt-6 flex justify-end">
+        <button (click)="clearCart()" class="bg-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded">
+            Clear Cart
+        </button>
+    </div>
+</div>

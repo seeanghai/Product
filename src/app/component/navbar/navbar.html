@@ -1,0 +1,22 @@
+<header class="sticky top-0 bg-blue-50 shadow-md px-20 text-gray-700 z-50">
+  <div class="flex items-center h-17">
+    <nav class="flex items-center w-full justify-between px-2">
+      <ul class="flex items-baseline gap-6 text-sm font-semibold text-gray-600">
+        <li href="#" class="no-underline cursor-pointer text-2xl">GuStore</li>
+        <li routerLink="/" href="#" class="no-underline cursor-pointer">Home</li>
+        <li routerLink="/product" class="no-underline cursor-pointer">Product</li>
+      </ul>
+      <div class="relative flex items-center gap-3">
+        <input class="p-2 h-50 bg-gray-200 px-10 rounded" type="text" placeholder="Search...">
+        <i class='bx bx-search-alt-2 text-2xl absolute left-40 top-1'></i>
+        <button
+          class=" bg-slate-50 hover:bg-green-300 rounded px-3 py-[8px] border-2 border-gray-200 text-xs">Search</button>
+        <i routerLink="cart" class="fa-solid fa-cart-shopping relative">
+          <span *ngIf="cartCount > 0" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-1 rounded-full">
+            {{ cartCount }}
+          </span>
+        </i>
+      </div>
+    </nav>
+  </div>
+</header>
