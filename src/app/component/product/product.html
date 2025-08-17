@@ -1,26 +1,36 @@
 <section class="w-full min-h-screen p-4">
-  <div class="grid grid-cols-5 gap-12 w-full place-content-center">
+  <!-- Responsive grid: 1 col on mobile, 2 on sm, 3 on md, 4 on lg, 5 on xl -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 w-full place-content-center">
+    
     <div *ngFor="let product of products"
-         class="relative flex flex-col bg-gray-200 justify-center w-full items-center p-2 rounded shadow">
+         class="relative flex flex-col bg-gray-200 justify-center items-center p-2 rounded shadow">
       
-      <p class="absolute top-3 right-3 font-semibold text-gray-900 bg-amber-300 rounded p-1">
+      <!-- Discount badge -->
+      <p class="absolute top-3 right-3 font-semibold text-gray-900 bg-amber-300 rounded px-2 py-1 text-xs sm:text-sm">
         -{{ product.discount }}%
       </p>
 
-      <!-- Make the image clickable and navigate to detail page -->
+      <!-- Product image (clickable) -->
       <img [src]="product.img" 
            [alt]="product.name" 
            [routerLink]="['/detailProduct', product.id]" 
-           class="w-full h-80 object-cover rounded cursor-pointer" />
+           class="w-full h-60 sm:max-h-20 md:max-h-72 lg:max-h-80 sm:min-h-60 md:min-h-72 lg:min-h-80 object-cover  rounded cursor-pointer" />
 
+      <!-- Product details -->
       <div class="mt-2 text-center">
-        <p class="font-semibold">{{ product.name }}</p>
-        <p class="text-sm text-gray-700 text-start">{{ product.description }}</p>
-        <p class="mt-1 font-semibold">Price : <i>${{ product.price }}</i></p>
-        <button class="px-4 py-1 my-2 bg-green-400 rounded text-sm hover:bg-green-500 transition-all hover:translate-y-[-1px] duration-150" (click)="addToCart(product)">
+        <p class="font-semibold text-sm sm:text-base">{{ product.name }}</p>
+        <p class="text-xs sm:text-sm text-gray-700 text-start">{{ product.description }}</p>
+        <p class="mt-1 font-semibold text-sm sm:text-base">
+          Price : <i>${{ product.price }}</i>
+        </p>
+
+        <!-- Add button -->
+        <button class="px-3 sm:px-4 py-1 my-2 bg-green-400 rounded text-xs sm:text-sm hover:bg-green-500 transition-all hover:translate-y-[-1px] duration-150" 
+                (click)="addToCart(product)">
           ADD
         </button>
       </div>
     </div>
+
   </div>
 </section>

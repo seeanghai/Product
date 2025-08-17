@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
 
-<footer class="bg-gray-800 text-gray-200 py-10">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
+
+<footer class="bg-gray-800 text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+
     
-  
     <div>
       <h3 class="text-lg font-semibold mb-4">ABOUT US</h3>
       <p class="text-sm leading-relaxed">
@@ -13,26 +14,30 @@
       </p>
     </div>
 
-    
+   
     <div>
       <h3 class="text-lg font-semibold mb-4">LINKS</h3>
       <ul class="space-y-2">
-        <li><a href="#" class="hover:underline">Home</a></li>
-        <li><a href="#" class="hover:underline">About</a></li>
-        <li><a href="#" class="hover:underline">Services</a></li>
-        <li><a href="#" class="hover:underline">Contact</a></li>
+        <li><a routerLink="/home" class="hover:underline">Home</a></li>
+        <li><a routerLink="/about" class="hover:underline">About</a></li>
+        <li><a routerLink="/services" class="hover:underline">Services</a></li>
+        <li><a routerLink="/contact" class="hover:underline">Contact</a></li>
       </ul>
     </div>
 
-    
+    <!-- Contact -->
     <div>
       <h3 class="text-lg font-semibold mb-4">CONTACT</h3>
       <p class="text-sm">Phnom Penh, Cambodia</p>
-      <p class="text-sm">+855 123 456 789</p>
-      <p class="text-sm">info.com</p>
+      <p class="text-sm">
+        <a href="tel:+855123456789" class="hover:underline">+855 123 456 789</a>
+      </p>
+      <p class="text-sm">
+        <a href="mailto:info@company.com" class="hover:underline">info@company.com</a>
+      </p>
     </div>
 
-    
+    <!-- Social -->
     <div>
       <h3 class="text-lg font-semibold mb-4">FOLLOW US</h3>
       <div class="flex gap-4 text-xl">
@@ -45,11 +50,19 @@
 
   </div>
 
-  <!-- Bottom Copyright -->
+  <!-- Copyright -->
   <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
     © 2025 Your Company. All rights reserved.
   </div>
 </footer>
-
-
+<style>html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+router-outlet {
+  flex: 1;
+}</style>
 

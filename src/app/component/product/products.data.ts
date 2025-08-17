@@ -1,19 +1,22 @@
 export const PRODUCTS = [
   { id: 1, img: 'A2.jpg', 
-    name: 'Hiking  - NH Escape 500', 
-    description: 'Our motivation? To provide a comfortable backpack with compartments and accessories. Your best daily companion with its 3 compartments, 14 pockets and smart functions.', 
+    name: 'Hiking  - NH Escape 500 Gustore production', 
+    description: 'Our motivation? To provide a comfortable and accessories. Your best daily companion  Your best with its 3 compartments, 14 pockets and smart functionsprovide a comfortable.', 
     price: 220.99, discount: 10 },
-  { id: 2, img: 'A3.jpg', name: '30L Hiking Arpenaz 500 isothermal', description: 'Full of surprises, this hiking backpack also has an isothermal compartment to keep your picnic cool. The removable rug will keep you dry when eating.'
+  { id: 2, img: 'A3.jpg', name: '30L Hiking Arpenaz 500 isothermal'
+   , description: 'Full of surprises, this hiking backpack also has an isothermal compartment to keep your picnic cool. backpack also has an isothermalThe removable rug will keep you dry when eating.'
     , price: 225, discount: 15 },
-  { id: 3, img: 'A4.jpg', name: 'Hiking backpack 35 L - NH Escape 500', description: 'This hiking bag is comfortable with its padded pads, practical with its 3 compartments and 15 pockets and smart thanks to its cabin size and clever features.', 
+  { id: 3, img: 'A4.jpg', name: 'Hiking backpack 35 L - NH Escape 500'
+   , description: 'This hiking bag is comfortable with its padded pads, practical with its 3 compartments and 15 pockets and smart thanks to its cabin size and clever features.', 
     price: 118, discount: 20 },
-  { id: 4, img: 'A5.jpg', name: '30L Hiking Backpack NH Arpenaz 500 isothermal', description: 'Full of surprises, this hiking backpack also has an isothermal compartment to keep your picnic cool. The removable rug will keep you dry when eating.', 
+  { id: 4, img: 'A5.jpg', name: '30L Hiking Backpack NH Arpenaz 500 isothermal'
+   , description: 'Full of surprises, this hiking backpack also has an isothermal compartment this hiking backpack to keep your picnic cool. The removable rug will keep you dry when eating.', 
     price: 12, discount: 5 },
   { id: 5, img: 'A6.jpg', name: '22 L Rolltop Mountain Hiking Backpack - MH500 Light Green', 
     description: 'This versatile bag has a 22-litre capacity, rolltop opening and multiple pockets. Its foam straps and design that conforms to your movements provide optimal comfort.', 
     price: 190, discount: 8 },
   { id: 6, img: 'A7.jpg', name: '20 L Hiking Backpack - NH100 Arpenaz - Blue', 
-    description: 'This 20 L bag has all the essentials for hiking: 2 zip pockets, a large compartment, 2 bottle holders and a separator for a 15” PC or water bladder.', 
+    description: 'This 20 L bag has all the essentials for hiking: 2 zip pockets, a large compartment, 2 bottle holders and awater bladder separator for a 15” PC or water bladder.', 
     price: 178, discount: 12 },
   { id: 7, img: 'A8.jpg', name: '20L Hiking Backpack - NH Arpenaz 500', 
     description: 'With its padded straps and thick, ventilated pads on the back, this hiking backpack is comfortable to wear. Very robust, it’s suitable for your lowland walks.',
@@ -52,7 +55,7 @@ export const PRODUCTS = [
      description: ' after shoes, streetwear and accessories from Nike, Jordan, New Balance, and moreYou can always count on a classic. The Dunk Low pairs its iconic color blocking with premium materials and plush padding for game-changing comfort that lasts. The styling possibilities are endless—how will you wear your Dunks?', 
      price: 125, discount: 8 },
   { id: 19, img: 'A22.jpg', name: 'Air Jordan 9 G NRG  see our shipping options at checkout.',
-     description: 'When MJ hits the open highway from his hometown to the historical golf haven among the crisp pines and aged cedars in the Carolina sand hills, there’s often a succulent cigar perched between his fingers. This special AJ9 nods to MJ’s pre-round routine, complete with cigar-shaped lace tips, rough textures that mimic the road', 
+     description: 'When MJ hits the open highway from his hometown to the historical golf haven among the crisp pines and aged cedars in the Carolina sand hills, theres often a succulent cigar perched between his fingers. This special AJ9 nods to MJs pre-round routine, complete with cigar-shaped lace tips, rough textures that mimic the road', 
      price: 125, discount: 20},
   { id: 20, img: 'A23.jpg', name: 'Nike Air Zoom Spiridon Cage 2 our shipping options at checkout',
      description: 'First released in 2003, the Nike Air Zoom Spiridon Cage 2 is as relevant today as it was back in the day. A full-length, arched foam midsole and caged Air Zoom unit deliver optimal cushioning, while durable traction pods on the outsole provide grip and stability. Slip into a responsive ride in Y2K style.', 
