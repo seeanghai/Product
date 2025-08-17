@@ -57,7 +57,7 @@ export const PRODUCTS = [
   { id: 19, img: 'A22.jpg', name: 'Air Jordan 9 G NRG  see our shipping options at checkout.',
      description: 'When MJ hits the open highway from his hometown to the historical golf haven among the crisp pines and aged cedars in the Carolina sand hills, theres often a succulent cigar perched between his fingers. This special AJ9 nods to MJs pre-round routine, complete with cigar-shaped lace tips, rough textures that mimic the road', 
      price: 125, discount: 20},
-  { id: 20, img: 'A23.jpg', name: 'Nike Air Zoom Spiridon Cage 2 our shipping options at checkout',
+  { id: 20, img: 'A23.jpg', name: 'Nike Air Zoom Spiridon Cage 2 our shipping options ',
      description: 'First released in 2003, the Nike Air Zoom Spiridon Cage 2 is as relevant today as it was back in the day. A full-length, arched foam midsole and caged Air Zoom unit deliver optimal cushioning, while durable traction pods on the outsole provide grip and stability. Slip into a responsive ride in Y2K style.', 
      price: 125, discount: 25 },
 
