@@ -3,7 +3,7 @@ export const PRODUCTS = [
     name: 'Hiking  - NH Escape 500 Gustore production', 
     description: 'Our motivation? To provide a comfortable and accessories. Your best daily companion  Your best with its 3 compartments, 14 pockets and smart functionsprovide a comfortable.', 
     price: 220.99, discount: 10 },
-  { id: 2, img: 'A3.jpg', name: '30L Hiking Arpenaz 500 isothermal'
+  { id: 2, img: 'A3.jpg', name: '30L Hiking Arpenaz 500 isothermal original USA'
    , description: 'Full of surprises, this hiking backpack also has an isothermal compartment to keep your picnic cool. backpack also has an isothermalThe removable rug will keep you dry when eating.'
     , price: 225, discount: 15 },
   { id: 3, img: 'A4.jpg', name: 'Hiking backpack 35 L - NH Escape 500'
