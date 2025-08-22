@@ -1,17 +1,23 @@
 <div *ngIf="selectedProduct" 
      class="grid grid-cols-1 md:grid-cols-2 gap-10 p-4 sm:p-8 md:p-12 lg:p-20 h-full">
-  
-  <!-- Left: Product Image -->
-  <div class="flex-shrink-0">
+
+  <!-- Left: Product Image Full -->
+  <div class="flex-shrink-0 relative">
     <img [src]="selectedProduct.img" 
-         [alt]="selectedProduct.name" 
-         class="w-full h-64 sm:h-80 md:h-[400px] object-cover rounded" />
+         [alt]="'Image of ' + selectedProduct.name" 
+         class="w-full h-full max-h-[80vh] object-contain rounded-lg shadow-lg" />
+
+    <!-- Discount Badge -->
+    <span *ngIf="selectedProduct.discount > 0" 
+          class="absolute top-4 left-4 bg-red-500 text-white text-xs sm:text-sm px-3 py-1 rounded-lg shadow">
+      -{{ selectedProduct.discount }}%
+    </span>
   </div>
 
   <!-- Right: Product Info -->
-  <div class="flex-1">
-    <h2 class="text-xl sm:text-2xl font-bold mb-4">{{ selectedProduct.name }}</h2>
-    <p class="mb-2 text-sm sm:text-base">{{ selectedProduct.description }}</p>
+  <div class="flex flex-col justify-center">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4">{{ selectedProduct.name }}</h2>
+    <p class="mb-4 text-sm sm:text-base text-gray-700">{{ selectedProduct.description }}</p>
 
     <!-- Product Details Table -->
     <table class="w-full text-left border-collapse border border-gray-300 rounded text-sm sm:text-base">
@@ -20,10 +26,10 @@
           <td class="px-3 sm:px-4 py-2 font-semibold border border-gray-300">Price</td>
           <td class="px-3 sm:px-4 py-2 border border-gray-300">
             <span *ngIf="selectedProduct.discount > 0" class="line-through text-gray-500 mr-2">
-              ${{ selectedProduct.price }}
+              {{ selectedProduct.price | currency:'USD' }}
             </span>
-            <span>
-              ${{ (selectedProduct.price * (1 - selectedProduct.discount / 100)).toFixed(2) }}
+            <span class="font-bold text-lg text-green-600">
+              {{ (selectedProduct.price * (1 - selectedProduct.discount / 100)) | currency:'USD' }}
             </span>
           </td>
         </tr>
@@ -39,9 +45,13 @@
           <td class="px-3 sm:px-4 py-2 font-semibold border border-gray-300">Quantity</td>
           <td class="px-3 sm:px-4 py-2 border border-gray-300">
             <div class="flex items-center gap-2">
-              <button (click)="decreaseQty(selectedProduct)" class="bg-gray-300 px-2 rounded hover:bg-gray-400">-</button>
+              <button aria-label="Decrease quantity" 
+                      (click)="decreaseQty(selectedProduct)" 
+                      class="bg-gray-300 px-2 rounded hover:bg-gray-400">-</button>
               <span>{{ selectedProduct.qty || 1 }}</span>
-              <button (click)="increaseQty(selectedProduct)" class="bg-gray-300 px-2 rounded hover:bg-gray-400">+</button>
+              <button aria-label="Increase quantity" 
+                      (click)="increaseQty(selectedProduct)" 
+                      class="bg-gray-300 px-2 rounded hover:bg-gray-400">+</button>
             </div>
           </td>
         </tr>
@@ -49,7 +59,7 @@
         <tr class="border border-gray-300">
           <td class="px-3 sm:px-4 py-2 font-semibold border border-gray-300">Total</td>
           <td class="px-3 sm:px-4 py-2 font-bold border border-gray-300">
-            ${{ ((selectedProduct.price * (1 - selectedProduct.discount / 100)) * (selectedProduct.qty || 1)).toFixed(2) }}
+            {{ ((selectedProduct.price * (1 - selectedProduct.discount / 100)) * (selectedProduct.qty || 1)) | currency:'USD' }}
           </td>
         </tr>
       </tbody>
@@ -57,7 +67,7 @@
 
     <!-- Add to Cart Button -->
     <button (click)="addToCart(selectedProduct)" 
-            class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full sm:w-auto">
+            class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow w-full sm:w-auto">
       Add to Cart
     </button>
   </div>
