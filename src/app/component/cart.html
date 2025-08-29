@@ -1,7 +1,6 @@
 <div class="px-4 sm:px-6 py-4 w-full max-w-6xl mx-auto">
   <h2 class="text-2xl sm:text-3xl font-bold mb-6">Your Cart</h2>
 
-  <!-- Responsive wrapper -->
   <div class="overflow-x-auto rounded-lg shadow">
     <table class="min-w-full border border-gray-300">
       <thead class="bg-gray-100 text-gray-700 text-sm sm:text-base">
@@ -16,23 +15,14 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Cart rows -->
         <tr *ngFor="let item of cartItems; let i = index" 
             class="border-b border-gray-200 hover:bg-gray-50 text-sm sm:text-base">
-          
-          <!-- Index -->
           <td class="px-3 sm:px-4 py-2 text-center font-semibold">{{ i + 1 }}</td>
-
-          <!-- Product info -->
           <td class="px-3 sm:px-4 py-2 flex items-center gap-3">
             <img [src]="item.img" [alt]="item.name" class="h-10 w-10 sm:h-12 sm:w-12 object-cover rounded" />
             <span class="font-medium">{{ item.name }}</span>
           </td>
-
-          <!-- Description (hidden on small) -->
           <td class="px-3 sm:px-4 py-2 hidden md:table-cell">{{ item.description }}</td>
-
-          <!-- Price with discount handling -->
           <td class="px-3 sm:px-4 py-2">
             <span *ngIf="item.discount > 0" class="line-through text-gray-500 mr-1">
               ${{ item.price }}
@@ -41,8 +31,6 @@
               ${{ (item.price * (1 - (item.discount || 0) / 100)).toFixed(2) }}
             </span>
           </td>
-
-          <!-- Quantity controls -->
           <td class="px-3 sm:px-4 py-2 text-center">
             <div class="flex items-center justify-center gap-2">
               <button (click)="decreaseQty(item)" class="bg-gray-300 px-2 rounded hover:bg-gray-400">-</button>
@@ -50,13 +38,9 @@
               <button (click)="increaseQty(item)" class="bg-gray-300 px-2 rounded hover:bg-gray-400">+</button>
             </div>
           </td>
-
-          <!-- Row total -->
           <td class="px-3 sm:px-4 py-2 font-semibold">
             ${{ ((item.price * (1 - (item.discount || 0) / 100)) * (item.qty || 1)).toFixed(2) }}
           </td>
-
-          <!-- Action -->
           <td class="px-3 sm:px-4 py-2 text-center">
             <button (click)="removeItem(i)" 
                     class="bg-red-500 hover:bg-red-600 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm">
@@ -65,16 +49,28 @@
           </td>
         </tr>
 
-        <!-- Total row -->
+        <!-- Totals -->
         <tr *ngIf="cartItems.length > 0" class="bg-gray-100 font-bold">
-          <td colspan="5" class="px-3 sm:px-4 py-2 text-right">Total Amount:</td>
-          <td class="px-3 sm:px-4 py-2">
-            ${{ getTotalPrice().toFixed(2) }}
-          </td>
+          <td colspan="5" class="px-3 sm:px-4 py-2 text-right">Total Price:</td>
+          <td class="px-3 sm:px-4 py-2">${{ getTotalPrice().toFixed(2) }}</td>
           <td></td>
         </tr>
 
-        <!-- Empty cart -->
+        <tr *ngIf="cartItems.length > 0" class="bg-gray-100 font-bold">
+          <td colspan="5" class="px-3 sm:px-4 py-2 text-right">Discount Savings:</td>
+          <td class="px-3 sm:px-4 py-2 text-red-600">-${{ getTotalSavings().toFixed(2) }}</td>
+          <td></td>
+        </tr>
+
+       <tr *ngIf="cartItems.length > 0" class="bg-gray-200 font-bold">
+  <td colspan="6" class="px-3 sm:px-4 py-2 text-right text-green-700">
+    Total Amount &nbsp; ${{ getTotalAmountUSD().toFixed(2) }} = 
+    <span class="text-red-600">៛{{ getTotalAmountKHR() | number:'1.0-0' }}</span>
+  </td>
+  <td></td>
+</tr>
+
+
         <tr *ngIf="cartItems.length === 0">
           <td colspan="7" class="text-center py-6 text-gray-500">
             Your cart is empty.

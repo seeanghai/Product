@@ -11,42 +11,58 @@ import { CartService } from '../Service/cartService';
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
 
+  // Exchange rate USD -> KHR
+  exchangeRate = 4000;
+
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    // Subscribe to cartItems observable to update in real time
     this.cartService.cartItems$.subscribe(items => {
       this.cartItems = items;
     });
   }
 
-  // Remove single item
   removeItem(index: number) {
     this.cartService.removeItem(index);
   }
 
-  // Clear all items
   clearCart() {
     this.cartService.clearCart();
   }
 
-  // Increase quantity
   increaseQty(item: any) {
     this.cartService.updateQty(item.id, (item.qty || 1) + 1);
   }
 
-  // Decrease quantity
   decreaseQty(item: any) {
     if ((item.qty || 1) > 1) {
       this.cartService.updateQty(item.id, (item.qty || 1) - 1);
     }
   }
 
-  // Total price
   getTotalPrice(): number {
     return this.cartItems.reduce(
-      (sum, item) => sum + item.price * (item.qty || 1),
+      (sum, item) => sum + (item.price * (item.qty || 1)),
       0
     );
+  }
+
+  getTotalAmountUSD(): number {
+    return this.cartItems.reduce(
+      (sum, item) =>
+        sum +
+        ((item.discountPrice ??
+          item.price * (1 - (item.discount || 0) / 100)) *
+          (item.qty || 1)),
+      0
+    );
+  }
+
+  getTotalAmountKHR(): number {
+    return this.getTotalAmountUSD() * this.exchangeRate;
+  }
+
+  getTotalSavings(): number {
+    return this.getTotalPrice() - this.getTotalAmountUSD();
   }
 }
